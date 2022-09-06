@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% load bootstrap4 %}
+
+{% block content %}
+<div class="container">
+    <h1>ማ/ደ/ሰ/መ/ደ ኣብ ኣዲስ ኣባባ</h1>
+    <h3>ዕላማ ናይዚ ፎርም አዚ ካብ ኣገልግሎት ምሕበር ርሒቆም ዘለዉ ኣባላት ማሕበር ናብ ኣገልግሎት ንምምስ ስለ ዝኮነ ምትሕብባርኩም ከይፍለየና ንምሕጸን!</h3>
+    <form method="POST">
+        {% csrf_token %}
+        {% bootstrap_form form %}
+        <input type="submit" value="Submit" class="btn btn-success">
+    </form>
+    <br/>
+</div>
+{% endblock %}
