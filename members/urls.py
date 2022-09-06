@@ -1,5 +1,7 @@
 from django.urls import path
 from django.contrib.auth import views as auth_views
+from django.conf import settings
+from django.conf.urls.static import static
 from . import views
 
 app_name = 'members'
@@ -23,4 +25,4 @@ urlpatterns = [
     path("member_form",
          views.MemberForm.as_view(),
          name="member_form"),
-]
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

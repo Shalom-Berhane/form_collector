@@ -43,6 +43,7 @@ class LostMemberModel(models.Model):
 
 class MemberFormModel(models.Model):
     # user_name = models.ForeignKey(User, on_delete=models.CASCADE)
+    photo = models.ImageField(upload_to='media')
     user_name = models.CharField(max_length=100)
     phone_number = models.IntegerField()
     address = models.CharField(max_length=100)
