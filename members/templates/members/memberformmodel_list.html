@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% load bootstrap4 %}
+
+{% block content %}
+<div class="col-md-8">
+    {% for post in my_projects %}
+        {{ post.user_name }}<br/>
+        {{ post.phone_number }}
+    {% endfor %}
+</div>
+{% endblock %}

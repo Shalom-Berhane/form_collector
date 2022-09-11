@@ -22,7 +22,16 @@ urlpatterns = [
     path("form/",
          views.LostMember.as_view(),
          name="form"),
-    path("member_form",
+    path("member_form/",
          views.MemberForm.as_view(),
          name="member_form"),
+    path("my_form/",
+         views.ListMemberForm.as_view(),
+         name="my_form"),
+    path("lost_list/",
+         views.ListLostMemberForm.as_view(),
+         name="lost_member_list"),
+    path("detail/<pk>/",
+         views.DetailLostMember.as_view(),
+         name="detail")
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

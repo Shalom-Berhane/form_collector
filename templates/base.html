@@ -27,6 +27,8 @@ body {background-color: #333333;
                 <li><a href="{% url 'members:logout' %}" class="btn btn-simple">Log out</a></li>
                 <li><a href="{% url 'members:form' %}" class="btn btn-simple btn-lg">Add Lost Member</a></li>
                 <li><a href="{% url 'members:member_form' %}" class="btn btn-simple btn-lg">Your Form</a></li>
+                <li><a href="{% url 'members:my_form' %}" class="btn btn-simple btn-lg">Show My Form</a></li>
+                <li><a href="{% url 'members:lost_member_list' %}" class="btn btn-simple btn-lg">Show Lost Member</a></li>
             {% else %}
                 <li><a href="{% url 'members:login' %}" class="btn btn-simple btn-lg">Log in</a></li>
                 <li><a href="{% url 'members:signup' %}" class="btn btn-simple btn-lg">Sign up</a></li>

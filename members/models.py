@@ -1,5 +1,6 @@
 from django.contrib import auth
 from django.db import models
+from django.contrib.auth import get_user_model
 
 CHOICES =(
     ("1", "ኣብ ፍሉይ መደብ ጥራይ ይሳተፍ/ትሳተፍ"),
@@ -15,16 +16,24 @@ academic = (
     ("5", "12+4"),
     ("6", "12+5"),
 )
+new_user = get_user_model()
+
+# class User(auth.models.User, auth.models.PermissionsMixin):
+#
+#     def __str__(self):
+#         return "@{}".format(self.username)
 
 
-class User(auth.models.User, auth.models.PermissionsMixin):
+class User(new_user):
 
     def __str__(self):
-        return "@{}".format(self.username)
+        return str(self.username)
 
 
 class LostMemberModel(models.Model):
+    author = models.ForeignKey(new_user, on_delete=models.CASCADE)
     full_name = models.CharField(max_length=200)
+    photo = models.ImageField(upload_to='media', blank=True, null=True)
     address = models.CharField(max_length=100)
     phone_number = models.IntegerField(
         help_text="Enter 6 digit roll number"
@@ -38,13 +47,13 @@ class LostMemberModel(models.Model):
     additional_advice = models.TextField()
 
     def __str__(self):
-        return self.full_name
+        return str(self.full_name)
 
 
 class MemberFormModel(models.Model):
-    # user_name = models.ForeignKey(User, on_delete=models.CASCADE)
-    photo = models.ImageField(upload_to='media')
-    user_name = models.CharField(max_length=100)
+    user_name = models.OneToOneField(new_user, related_name="posts", on_delete=models.CASCADE)
+    photo = models.ImageField(upload_to='media',  blank=True, null=True)
+    full_name = models.CharField(max_length=100)
     phone_number = models.IntegerField()
     address = models.CharField(max_length=100)
     current_member = models.CharField(max_length=200)
@@ -57,4 +66,4 @@ class MemberFormModel(models.Model):
     guardian_number = models.IntegerField()
 
     def __str__(self):
-        return self.user_name
+        return str(self.user_name)

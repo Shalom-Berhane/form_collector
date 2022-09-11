@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% load bootstrap4 %}
+
+{% block content %}
+
+
+
+        <div class="row">
+            <div class="col-sm-4">
+                {{ object.full_name }}<br/>
+                {{ object.phone_number }}
+            </div>
+            <div class="col-sm-4">
+                {{ post.address }}
+            </div>
+
+        </div>
+
+    <hr/>
+
+
+<!--    </div>-->
+        {% endblock %}
+

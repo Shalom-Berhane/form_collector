@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% load bootstrap4 %}
+
+{% block content %}
+<style>
+    .aTag {
+  Text-decoration:none;
+  color: white;
+}
+</style>
+<!--<div class="col-md-8">-->
+    {% for post in my_projects %}
+<a class="aTag" href="{% url 'members:detail' pk=post.pk %}">
+        <div class="row">
+            <div class="col-sm-4">
+                {{ post.full_name }}<br/>
+                {{ post.phone_number }}
+            </div>
+            <div class="col-sm-4">
+                {{ post.address }}
+            </div>
+
+        </div>
+</a>
+    <hr/>
+            {% endfor %}
+
+<!--    </div>-->
+        {% endblock %}
+

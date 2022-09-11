@@ -25,10 +25,12 @@ class MemberForm(forms.ModelForm):
     class Meta:
         model = MemberFormModel
         fields = "__all__"
+        # fields = ('full_name', 'phone_number')
+        exclude = ['user_name']
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        self.fields['user_name'].label = 'ምሉአ ስም'
+        self.fields['full_name'].label = 'ምሉአ ስም'
         self.fields['phone_number'].label = 'ቁ. ስልኪ'
         self.fields['address'].label = 'ህልው ገዛወቲ'
         self.fields['current_member'].label = 'ህልው ክፍሊ'
@@ -45,6 +47,7 @@ class LostMemberCreateForm(forms.ModelForm):
     class Meta:
         model = LostMemberModel
         fields = "__all__"
+        exclude = ['author']
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
