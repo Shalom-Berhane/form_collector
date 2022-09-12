@@ -1,8 +1,7 @@
-from django.contrib import auth
 from django.db import models
 from django.contrib.auth import get_user_model
 
-CHOICES =(
+CHOICES = (
     ("1", "ኣብ ፍሉይ መደብ ጥራይ ይሳተፍ/ትሳተፍ"),
     ("2", "ኣብ ናይ ጽዋአ ኣኼባ ሳሕቲ ይሳተፍ/ትሳተፍ"),
     ("3", "ኣብ ኩሉ ዓይነት ኣገልግሎት ኣይሳተፍን/ኣይትሳተፍን"),
@@ -17,11 +16,6 @@ academic = (
     ("6", "12+5"),
 )
 new_user = get_user_model()
-
-# class User(auth.models.User, auth.models.PermissionsMixin):
-#
-#     def __str__(self):
-#         return "@{}".format(self.username)
 
 
 class User(new_user):
@@ -52,8 +46,8 @@ class LostMemberModel(models.Model):
 
 class MemberFormModel(models.Model):
     user_name = models.OneToOneField(new_user, related_name="posts", on_delete=models.CASCADE)
-    photo = models.ImageField(upload_to='media',  blank=True, null=True)
     full_name = models.CharField(max_length=100)
+    photo = models.ImageField(upload_to='media',  blank=True, null=True)
     phone_number = models.IntegerField()
     address = models.CharField(max_length=100)
     current_member = models.CharField(max_length=200)

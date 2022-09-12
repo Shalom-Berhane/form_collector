@@ -6,47 +6,59 @@
     <title>Star Social</title>
 
     <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <!--    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">-->
 
     <!-- Latest compiled and minified JavaScript -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-
-<style>
-body {background-color: #333333;
-}
-</style>
+    <!--    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>-->
+    <!--    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>-->
+    <!--    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.min.js" integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6oz" crossorigin="anonymous"></script>-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+    <style>
+        body {background-color: #333333;
+        }
+    </style>
 </head>
 
 
 <body>
 
-<nav class="navbar  mynav" role="navigation" id="navbar">
+<nav class="navbar navbar-expand-md navbar-dark bg-dark" role="navigation" >
     <div class="container">
-        <ul class="nav navbar-nav navbar-right">
-            {% if user.is_authenticated %}
-                <li><a href="{% url 'members:logout' %}" class="btn btn-simple">Log out</a></li>
-                <li><a href="{% url 'members:form' %}" class="btn btn-simple btn-lg">Add Lost Member</a></li>
-                <li><a href="{% url 'members:member_form' %}" class="btn btn-simple btn-lg">Your Form</a></li>
-                <li><a href="{% url 'members:my_form' %}" class="btn btn-simple btn-lg">Show My Form</a></li>
-                <li><a href="{% url 'members:lost_member_list' %}" class="btn btn-simple btn-lg">Show Lost Member</a></li>
-            {% else %}
-                <li><a href="{% url 'members:login' %}" class="btn btn-simple btn-lg">Log in</a></li>
-                <li><a href="{% url 'members:signup' %}" class="btn btn-simple btn-lg">Sign up</a></li>
-            {% endif %}
-        </ul>
+        <a class="navbar-brand" href="{% url 'members:home' %}">Home</a>
+        {% if user.is_superuser %}
+        <a class="navbar-brand" href="{% url 'members:all_members' %}">All Members</a>
+        <a class="navbar-brand" href="{% url 'members:all_lost_members' %}">All lost Members</a>
+        {% endif %}
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+            <ul class="navbar-nav ms-auto">
+                {% if user.is_authenticated %}
+                <li><a href="{% url 'members:form' %}" class="nav-link">Add Lost Member</a></li>
+                <li><a href="{% url 'members:member_form' %}" class="nav-link">Your Form</a></li>
+                <li><a href="{% url 'members:my_form' %}" class="nav-link">Show My Form</a></li>
+                <li><a href="{% url 'members:lost_member_list' %}" class="nav-link">Show Lost Member</a></li>
+                <li><a href="{% url 'members:logout' %}" class="nav-link">LogOut!</a></li>
+                {% else %}
+                <li><a href="{% url 'members:login' %}" class="nav-link">Log in</a></li>
+                <li><a href="{% url 'members:signup' %}" class="nav-link">Sign up</a></li>
+                {% endif %}
+            </ul>
 
-
+        </div>
     </div>
 </nav>
-<div style="background:black; border-radius:25px; color:white !important" class="container jumbotron mycontent">
-    {% block content %}
+<div class="pt-4">
+    <div style="background:black; border-radius:25px; color:white !important" class="container jumbotron pt-4 pb-4 mycontent">
+        {% block content %}
 
-    {% endblock %}
+        {% endblock %}
 
+    </div>
 </div>
-
 <canvas id="canvas"></canvas>
-
-  </body>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
+</body>
 
 </html>

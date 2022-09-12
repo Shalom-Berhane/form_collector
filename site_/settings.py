@@ -39,7 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     # third part
-    'bootstrap4',
+    'bootstrap5',
 
     # custom
     'members',
@@ -134,4 +134,4 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 LOGIN_REDIRECT_URL = "members:home"
 LOGOUT_REDIRECT_URL = "members:login"
 
-CSRF_TRUSTED_ORIGINS = ['https://4c3b-196-188-176-70.ngrok.io']
+# CSRF_TRUSTED_ORIGINS = ['https://4c3b-196-188-176-70.ngrok.io']

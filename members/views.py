@@ -1,17 +1,13 @@
 from django.urls import reverse_lazy
-from django.views.generic import CreateView, TemplateView, ListView, DetailView
-from django.views.generic.edit import FormView
-from django.contrib.auth import get_user_model
-from django.http import HttpResponse
+from django.views.generic import CreateView, TemplateView, ListView, DetailView, edit
+from django.contrib.auth.mixins import LoginRequiredMixin
+
 from .models import LostMemberModel, MemberFormModel
 from django.shortcuts import render
 from . import forms
-from .models import User
-
-# User = get_user_model()
 
 
-class Home(TemplateView):
+class Home(LoginRequiredMixin, TemplateView):
     template_name = "home.html"
 
 
@@ -23,7 +19,7 @@ class SignUp(CreateView):
     template_name = "accounts/sign_up.html"
 
 
-class MemberForm(CreateView, FormView):
+class MemberForm(LoginRequiredMixin, CreateView, edit.FormView):
     form_class = forms.MemberForm
     model = MemberFormModel
 
@@ -38,7 +34,7 @@ class MemberForm(CreateView, FormView):
             return render(self.request, "members/haveForm.html", self.get_context_data())
 
 
-class LostMember(CreateView, FormView):
+class LostMember(LoginRequiredMixin, CreateView, edit.FormView):
     form_class = forms.LostMemberCreateForm
     model = LostMemberModel
 
@@ -50,15 +46,9 @@ class LostMember(CreateView, FormView):
         return super().form_valid(form)
 
 
-class ListMemberForm(ListView):
+class ListMemberForm(LoginRequiredMixin, ListView):
 
     model = MemberFormModel
-    # template_name = "user_post_list.html"
-
-    # def get_queryset(self):
-    #     print(self.kwargs)
-    #     user = get_object_or_404(User, username=self.kwargs.get('user_name'))
-    #     return MemberFormModel.objects.filter(author=user)#.order_by('-date_posted')
 
     def get_context_data(self, *args, **kwargs):
         context = super(ListMemberForm, self).get_context_data(**kwargs)
@@ -66,7 +56,7 @@ class ListMemberForm(ListView):
         return context
 
 
-class ListLostMemberForm(ListView):
+class ListLostMemberForm(LoginRequiredMixin, ListView):
 
     model = LostMemberModel
 
@@ -76,5 +66,25 @@ class ListLostMemberForm(ListView):
         return context
 
 
-class DetailLostMember(DetailView):
+class AllMembers(LoginRequiredMixin, ListView):
+
+    model = MemberFormModel
+
+    def get_context_data(self, *args, **kwargs):
+        context = super(AllMembers, self).get_context_data(**kwargs)
+        context['my_projects'] = MemberFormModel.objects.all()
+        return context
+
+
+class AllLostMember(LoginRequiredMixin, ListView):
+
+    model = LostMemberModel
+
+    def get_context_data(self, *args, **kwargs):
+        context = super(AllLostMember, self).get_context_data(**kwargs)
+        context['my_projects'] = LostMemberModel.objects.all()
+        return context
+
+
+class DetailLostMember(LoginRequiredMixin, DetailView):
     model = LostMemberModel
