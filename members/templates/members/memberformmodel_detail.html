@@ -26,18 +26,17 @@
 <div class="row m-3">
 
     <div class="col-sm-6">
-        <h4>Current member: <u>{{ object.current_member }} </u></h4>
+        <h5>Current member: <u>{{ object.current_member }} </u></h5>
         <h5>Church course: <u>{{ object.church_course }}</u></h5>
-        <h4>Academic Department: <u>{{ object.academic_department }} </u></h4>
+        <h5>Academic Department: <u>{{ object.academic_department }} </u></h5>
     </div>
-<!--        </div>-->
-<!--            <div class="col-sm-2">-->
-<!--                <p></p>-->
-<!--        </div>-->
         <div class="col-sm-6">
-            <h4>Additional Course: <u>{{ object.additional_course }} </u></h4>
-            <h5>Academic year: <u>12+{{ object.academic_year }}</u></h5>
-            <h5>Other academic year: <u>{{ object.other_academic_year }}</u></h5>
+            <h5>Additional Course: <u>{{ object.additional_course }} </u></h5>
+            {% if object.academic_year %}
+            <h5>Academic year: <u>{{ object.academic_year }}</u></h5>
+            {% else %}
+            <h5>Academic year: <u>{{ object.other_academic_year }}</u></h5>
+            {% endif %}
         </div>
 
     </div>
@@ -46,13 +45,9 @@
 <div class="row m-3">
 
     <div class="col-sm-6">
-        <h4>Guardian Name: <u>{{ object.guardian_name }} </u></h4>
+        <h5>Guardian Name: <u>{{ object.guardian_name }} </u></h5>
 
     </div>
-<!--        </div>-->
-<!--            <div class="col-sm-2">-->
-<!--                <p></p>-->
-<!--        </div>-->
         <div class="col-sm-6">
             <h5>Guardian number: <u>{{ object.guardian_number }}</u></h5>
         </div>

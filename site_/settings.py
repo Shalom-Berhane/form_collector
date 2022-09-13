@@ -134,4 +134,4 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 LOGIN_REDIRECT_URL = "members:home"
 LOGOUT_REDIRECT_URL = "members:login"
 
-# CSRF_TRUSTED_ORIGINS = ['https://4c3b-196-188-176-70.ngrok.io']
+CSRF_TRUSTED_ORIGINS = ['https://99b2-196-188-160-224.ngrok.io']

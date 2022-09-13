@@ -2,18 +2,19 @@ from django.db import models
 from django.contrib.auth import get_user_model
 
 CHOICES = (
-    ("1", "ኣብ ፍሉይ መደብ ጥራይ ይሳተፍ/ትሳተፍ"),
-    ("2", "ኣብ ናይ ጽዋአ ኣኼባ ሳሕቲ ይሳተፍ/ትሳተፍ"),
-    ("3", "ኣብ ኩሉ ዓይነት ኣገልግሎት ኣይሳተፍን/ኣይትሳተፍን"),
+    ("ኣብ ፍሉይ መደብ ጥራይ ይሳተፍ/ትሳተፍ", "ኣብ ፍሉይ መደብ ጥራይ ይሳተፍ/ትሳተፍ"),
+    ("ኣብ ናይ ጽዋአ ኣኼባ ሳሕቲ ይሳተፍ/ትሳተፍ", "ኣብ ናይ ጽዋአ ኣኼባ ሳሕቲ ይሳተፍ/ትሳተፍ"),
+    ("ኣብ ኩሉ ዓይነት ኣገልግሎት ኣይሳተፍን/ኣይትሳተፍን", "ኣብ ኩሉ ዓይነት ኣገልግሎት ኣይሳተፍን/ኣይትሳተፍን"),
 )
 
 academic = (
-    ("1", "11"),
-    ("2", "12+1"),
-    ("3", "12+2"),
-    ("4", "12+3"),
-    ("5", "12+4"),
-    ("6", "12+5"),
+    ("11", "11"),
+    ("12", "12"),
+    ("12+1", "12+1"),
+    ("12+2", "12+2"),
+    ("12+3", "12+3"),
+    ("12+4", "12+4"),
+    ("12+5", "12+5"),
 )
 new_user = get_user_model()
 
@@ -32,8 +33,8 @@ class LostMemberModel(models.Model):
     phone_number = models.IntegerField(
         help_text="Enter 6 digit roll number"
     )
-    participation = models.CharField(choices=CHOICES, max_length=200)
-    additional_reason = models.TextField()
+    participation = models.CharField(choices=CHOICES, max_length=200, blank=True)
+    additional_reason = models.TextField(blank=True)
     member1_name = models.CharField(max_length=200)
     member1_phone = models.IntegerField()
     member2_name = models.CharField(max_length=200)
@@ -54,8 +55,8 @@ class MemberFormModel(models.Model):
     church_course = models.CharField(max_length=200)
     academic_department = models.CharField(max_length=200)
     additional_course = models.CharField(max_length=200)
-    academic_year = models.CharField(choices=academic, max_length=200)
-    other_academic_year = models.CharField(max_length=200)
+    academic_year = models.CharField(choices=academic, max_length=200, blank=True)
+    other_academic_year = models.CharField(max_length=200, blank=True)
     guardian_name = models.CharField(max_length=200)
     guardian_number = models.IntegerField()
 

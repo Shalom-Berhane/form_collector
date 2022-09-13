@@ -26,29 +26,34 @@
 <div class="row m-3">
 
     <div class="col-sm-6">
-        <h4>Participation : <u>{{ object.participation }} </u></h4>
-        or
-        <h4>Additional Reason : <u>{{ object.additional_reason }} </u></h4>
+        {% if object.participation %}
+        <h5>Participation : <u>{{ object.participation }} </u></h5>
+        {% elif object.additional_reason %}
+        <h5>Participation : <u>{{ object.additional_reason }} </u></h5>
+        {% else %}
+<!--        <p></p>-->
+        {% endif %}
     </div>
 </div>
 <div class="row m-3">
 
     <div class="col-sm-6">
-        <h4>First close member name: <u>{{ object.member1_name }} </u></h4>
+        <h5>First close member name: <u>{{ object.member1_name }} </u></h5>
 
-        <h4>First close member phone number: <u>{{ object.member1_phone }}</u></h4>
+        <h5>First close member phone number: <u>{{ object.member1_phone }}</u></h5>
 
     </div>
     <div class="col-sm-6">
-        <h4>Second close member name: <u>{{ object.member2_name }} </u></h4>
-        <h4>Second close member phone number: <u>{{ object.member2_phone }}</u></h4>
+        <h5>Second close member name: <u>{{ object.member2_name }} </u></h5>
+        <h5>Second close member phone number: <u>{{ object.member2_phone }}</u></h5>
     </div>
 
 </div>
 <hr/>
 <div class="row m-3">
     <div class="col-sm-6">
-        <h4>Additional advice: <u>{{ object.additional_advice }} </u></h4>
+        <h4>Additional advice:</h4>
+        <p>{{ object.additional_advice }}</p>
     </div>
     </div>
     </div>
