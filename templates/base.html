@@ -25,14 +25,20 @@
 <nav class="navbar navbar-expand-md navbar-dark bg-dark" role="navigation" >
     <div class="container">
         <a class="navbar-brand" href="{% url 'members:home' %}">Home</a>
-        {% if user.is_superuser %}
-        <a class="navbar-brand" href="{% url 'members:all_members' %}">All Members</a>
-        <a class="navbar-brand" href="{% url 'members:all_lost_members' %}">All lost Members</a>
-        {% endif %}
+
+<!--        <a class="navbar-brand" href="{% url 'members:all_members' %}">Members</a>-->
+<!--        <a class="navbar-brand" href="{% url 'members:all_lost_members' %}">Lost Memb</a>-->
+<!--       -->
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+            {% if user.is_superuser %}
+            <ul class="navbar-nav">
+                <li><a class="navbar-brand" href="{% url 'members:all_members' %}">All Members</a></li>
+                <li><a class="navbar-brand" href="{% url 'members:all_lost_members' %}">All Lost Members</a></li>
+            </ul>
+             {% endif %}
             <ul class="navbar-nav ms-auto">
                 {% if user.is_authenticated %}
                 <li><a href="{% url 'members:form' %}" class="nav-link">Add Lost Member</a></li>

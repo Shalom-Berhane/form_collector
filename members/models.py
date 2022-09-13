@@ -60,4 +60,4 @@ class MemberFormModel(models.Model):
     guardian_number = models.IntegerField()
 
     def __str__(self):
-        return str(self.user_name)
+        return str(self.full_name)

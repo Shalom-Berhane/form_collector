@@ -39,5 +39,8 @@ urlpatterns = [
          name="all_members"),
     path("detail/<pk>/",
          views.DetailLostMember.as_view(),
-         name="detail")
+         name="detail"),
+    path("detail_member/<pk>/",
+         views.DetailMember.as_view(),
+         name="detail_member")
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

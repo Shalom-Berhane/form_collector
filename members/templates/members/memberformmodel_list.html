@@ -1,11 +1,40 @@
 {% extends "base.html" %}
-{% load bootstrap5%}
+{% load bootstrap5 %}
 
 {% block content %}
-<div class="col-md-8">
-    {% for post in my_projects %}
-        {{ post.user_name }}<br/>
-        {{ post.phone_number }}
-    {% endfor %}
-</div>
+<style>
+    .aTag {
+        Text-decoration:none;
+        color: white;
+    }
+</style>
+<!--<div class="col-md-8">-->
+{% for post in my_projects %}
+<div class="list-group">
+<a class="aTag" href="{% url 'members:detail_member' pk=post.pk %}">
+    <div class="row">
+        <div class="col-sm-2">
+            {% if post.photo %}
+            <img src="{{ post.photo.url }}" class="img-thumbnail" >
+            {% else %}
+            <img src="" alt="No photo provided" class="img-thumbnail" >
+            {% endif %}
+        </div>
+        <div class="col-sm-6">
+            <h4>{{ post.full_name }}</h4>
+            {{ post.phone_number }}
+        </div>
+        <div class="col-sm-4">
+            <h5>{{ post.address }}</h5>
+            <p>Added by {{ post.user_name }}</p>
+        </div>
+
+    </div>
+</a>
+    </div>
+<hr/>
+{% endfor %}
+
+<!--    </div>-->
 {% endblock %}
+

@@ -88,3 +88,7 @@ class AllLostMember(LoginRequiredMixin, ListView):
 
 class DetailLostMember(LoginRequiredMixin, DetailView):
     model = LostMemberModel
+
+
+class DetailMember(LoginRequiredMixin, DetailView):
+    model = MemberFormModel
