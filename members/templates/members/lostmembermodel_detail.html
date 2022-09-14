@@ -3,7 +3,7 @@
 
 {% block content %}
 
-{% if user.is_staff %}
+{% if user.is_staff or user == object.author%}
 <div class="row m-3">
 
     <div class="col-sm-5">

@@ -94,4 +94,3 @@ class DetailMember(LoginRequiredMixin, DetailView):
     model = MemberFormModel
 
 
-#
