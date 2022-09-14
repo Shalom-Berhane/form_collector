@@ -92,3 +92,6 @@ class DetailLostMember(LoginRequiredMixin, DetailView):
 
 class DetailMember(LoginRequiredMixin, DetailView):
     model = MemberFormModel
+
+
+#

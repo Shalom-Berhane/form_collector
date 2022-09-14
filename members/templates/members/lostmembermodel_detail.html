@@ -2,13 +2,15 @@
 {% load bootstrap5 %}
 
 {% block content %}
+
+{% if user.is_staff %}
 <div class="row m-3">
 
     <div class="col-sm-5">
-        <h4>Author: <u>{{ object.author }} </u></h4>
-        <h4>Full Name: <u>{{ object.full_name }} </u></h4>
-        <h5>Phone: <u>{{ object.phone_number }}</u></h5>
-        <h5>Address: <u>{{ object.address }}</u></h5>
+        <h5>ምሉአ ስም ናይ ኣብ ማሕበር ዘይነጥፍ/ዘይትነጥፍ: <u>{{ object.full_name }} </u></h5>
+        <h6>ስልኪ ቅጽሩ/ራ: <u>{{ object.phone_number }}</u></h6>
+        <h6>ገዛዉቱ/ታ: <u>{{ object.address }}</u></h6>
+        <h5>መዝጋቢ ስም: <u>{{ object.author }} </u></h5>
     </div>
     <div class="col-sm-3">
         <p></p>
@@ -27,35 +29,38 @@
 
     <div class="col-sm-6">
         {% if object.participation %}
-        <h5>Participation : <u>{{ object.participation }} </u></h5>
+        <h6>ገምጋም ህልው ኣገልግሎት ዘይነጥፍ ዘሎ ኣባል ማሕበር: <u>{{ object.participation }} </u></h6>
         {% elif object.additional_reason %}
-        <h5>Participation : <u>{{ object.additional_reason }} </u></h5>
+        <h6>ገምጋም ህልው ኣገልግሎት ዘይነጥፍ ዘሎ ኣባል ማሕበር : <u>{{ object.additional_reason }} </u></h6>
         {% else %}
-<!--        <p></p>-->
+        <!--        <p></p>-->
         {% endif %}
     </div>
 </div>
 <div class="row m-3">
 
     <div class="col-sm-6">
-        <h5>First close member name: <u>{{ object.member1_name }} </u></h5>
+        <h6>ምሉአ ስም ናይ ቀዳማይ ኣባል ማሕበር: <u>{{ object.member1_name }} </u></h6>
 
-        <h5>First close member phone number: <u>{{ object.member1_phone }}</u></h5>
+        <h6>ስልኪ ቅጽሩ/ራ ናይ ቀዳማይ ኣባል ማሕበር: <u>{{ object.member1_phone }}</u></h6>
 
     </div>
     <div class="col-sm-6">
-        <h5>Second close member name: <u>{{ object.member2_name }} </u></h5>
-        <h5>Second close member phone number: <u>{{ object.member2_phone }}</u></h5>
+        <h6>ምሉአ ስም ናይ ካላኣይ ኣባል ማሕበር: <u>{{ object.member2_name }} </u></h6>
+        <h6>ስልኪ ቅጽሩ/ራ ናይ ካላኣይ ኣባል ማሕበር: <u>{{ object.member2_phone }}</u></h6>
     </div>
 
 </div>
 <hr/>
 <div class="row m-3">
     <div class="col-sm-6">
-        <h4>Additional advice:</h4>
+        <h6>ኣብ ምምላስ ኣባላት ክተኣታቶ ኣልዎ ትብልዎ ሓሳባት:</h6>
         <p>{{ object.additional_advice }}</p>
     </div>
-    </div>
-    </div>
-{% endblock %}
+</div>
+</div>
 
+{% else %}
+<h5>you have no access.</h5>
+{% endif %}
+{% endblock %}

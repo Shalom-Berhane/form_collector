@@ -31,6 +31,7 @@ class MemberForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.fields['full_name'].label = 'ምሉአ ስም'
+        self.fields['photo'].label = 'ናትካ ስእሊ የእቱ'
         self.fields['phone_number'].label = 'ቁ. ስልኪ'
         self.fields['address'].label = 'ህልው ገዛወቲ'
         self.fields['current_member'].label = 'ህልው ክፍሊ'
@@ -52,6 +53,7 @@ class LostMemberCreateForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.fields['full_name'].label = 'ምሉአ ስም ናይ ኣብ ማሕበር ዘይነጥፍ/ዘይትነጥፍ ዘሎ/ዘላ ኣባል ምሕበር፥'
+        self.fields['photo'].label = 'ናይ ካብ ኣገልግሎት ማሕበር ርሒቁ ዘሎ ስእሊ የእቱ'
         self.fields['address'].label = 'ገዛዉቱ/ታ፥'
         self.fields['phone_number'].label = 'ስልኪ ቅጽሩ/ራ፥'
         self.fields['participation'].label = 'ገምጋም ህልው ኣገልግሎት ዘይነጥፍ ዘሎ ኣባል ማሕበር፥'

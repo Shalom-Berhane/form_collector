@@ -2,57 +2,61 @@
 {% load bootstrap5 %}
 
 {% block content %}
-
+{% if user.is_staff %}
 <div class="row m-3">
 
     <div class="col-sm-5">
-        <h4>Name: <u>{{ object.full_name }} </u></h4>
-        <h5>Phone: <u>{{ object.phone_number }}</u></h5>
-        <h5>Address: <u>{{ object.address }}</u></h5>
-        </div>
-            <div class="col-sm-3">
-                <p></p>
-        </div>
-        <div class="col-sm-4">
-            {% if object.photo %}
-            <img src="{{ object.photo.url }}" class="img-thumbnail" style="width:100%;height:100%;">
-            {% else %}
-            <img src="" alt="No photo provided" class="img-thumbnail" >
-            {% endif %}
-        </div>
-
+        <h5>ምሉአ ስም: <u>{{ object.full_name }} </u></h5>
+        <h6>ቁ. ስልኪ: <u>{{ object.phone_number }}</u></h6>
+        <h6>ህልው ገዛወቲ: <u>{{ object.address }}</u></h6>
     </div>
+    <div class="col-sm-3">
+        <p></p>
+    </div>
+    <div class="col-sm-4">
+        {% if object.photo %}
+        <img src="{{ object.photo.url }}" class="img-thumbnail" style="width:100%;height:100%;">
+        {% else %}
+        <img src="" alt="No photo provided" class="img-thumbnail" >
+        {% endif %}
+    </div>
+
+</div>
 <hr/>
 <div class="row m-3">
 
     <div class="col-sm-6">
-        <h5>Current member: <u>{{ object.current_member }} </u></h5>
-        <h5>Church course: <u>{{ object.church_course }}</u></h5>
-        <h5>Academic Department: <u>{{ object.academic_department }} </u></h5>
+        <h6>ህልው ክፍሊ: <u>{{ object.current_member }} </u></h6>
+        <h6>ቅድሚ ሕጂ ዝወሰድካዮ/ክዮ መንፈሳዊ ትምህርቲ(ኮርስ): <u>{{ object.church_course }}</u></h6>
+        <h6>ዓለማዊ ዝወዳእካዮ/ክዮ ዓወደ ትምህርቲ: <u>{{ object.academic_department }} </u></h6>
     </div>
-        <div class="col-sm-6">
-            <h5>Additional Course: <u>{{ object.additional_course }} </u></h5>
-            {% if object.academic_year %}
-            <h5>Academic year: <u>{{ object.academic_year }}</u></h5>
-            {% else %}
-            <h5>Academic year: <u>{{ object.other_academic_year }}</u></h5>
-            {% endif %}
-        </div>
+    <div class="col-sm-6">
+        <h6>ምያ ወይ ስራሕ: <u>{{ object.additional_course }} </u></h6>
+        {% if object.academic_year %}
+        <h6>ደረጃ ትምህርቲ: <u>{{ object.academic_year }}</u></h6>
+        {% else %}
+        <h6>ደረጃ ትምህርቲ: <u>{{ object.other_academic_year }}</u></h6>
+        {% endif %}
+    </div>
 
-    </div>
+</div>
 
 <hr/>
 <div class="row m-3">
 
     <div class="col-sm-6">
-        <h5>Guardian Name: <u>{{ object.guardian_name }} </u></h5>
+        <h6>ናይ ቀረባ ዋሕስ ምሉእ ስም: <u>{{ object.guardian_name }} </u></h6>
 
     </div>
-        <div class="col-sm-6">
-            <h5>Guardian number: <u>{{ object.guardian_number }}</u></h5>
-        </div>
-
+    <div class="col-sm-6">
+        <h6>ቁ. ስልኪ ናይ ዋሕስካ/ኪ: <u>{{ object.guardian_number }}</u></h6>
     </div>
+
+</div>
+{% else %}
+<p>you have no access.</p>
+{% endif %}
+
 <!--    </div>-->
 {% endblock %}
 

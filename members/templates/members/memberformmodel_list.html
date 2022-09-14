@@ -8,32 +8,36 @@
         color: white;
     }
 </style>
-<!--<div class="col-md-8">-->
+{% if user.is_staff %}
 {% for post in my_projects %}
 <div class="list-group">
-<a class="aTag" href="{% url 'members:detail_member' pk=post.pk %}">
-    <div class="row">
-        <div class="col-sm-2">
-            {% if post.photo %}
-            <img src="{{ post.photo.url }}" class="img-thumbnail" >
-            {% else %}
-            <img src="" alt="No photo provided" class="img-thumbnail" >
-            {% endif %}
-        </div>
-        <div class="col-sm-6">
-            <h4>{{ post.full_name }}</h4>
-            {{ post.phone_number }}
-        </div>
-        <div class="col-sm-4">
-            <h5>{{ post.address }}</h5>
-            <p>Added by {{ post.user_name }}</p>
-        </div>
+    <a class="aTag" href="{% url 'members:detail_member' pk=post.pk %}">
+        <div class="row">
+            <div class="col-sm-2">
+                {% if post.photo %}
+                <img src="{{ post.photo.url }}" class="img-thumbnail" >
+                {% else %}
+                <img src="" alt="No photo provided" class="img-thumbnail" >
+                {% endif %}
+            </div>
+            <div class="col-sm-6">
+                <h4>{{ post.full_name }}</h4>
+                {{ post.phone_number }}
+            </div>
+            <div class="col-sm-4">
+                <h5>{{ post.address }}</h5>
+                <p>click to see more!</p>
+            </div>
 
-    </div>
-</a>
-    </div>
+        </div>
+    </a>
+</div>
 <hr/>
 {% endfor %}
+{% else %}
+<h5>you have no access.</h5>
+{% endif %}
+
 
 <!--    </div>-->
 {% endblock %}

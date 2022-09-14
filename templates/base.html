@@ -35,16 +35,25 @@
         <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
             {% if user.is_superuser %}
             <ul class="navbar-nav">
+                <li><a class="navbar-brand" href="{% url 'admin:index' %}">Edit</a></li>
                 <li><a class="navbar-brand" href="{% url 'members:all_members' %}">All Members</a></li>
                 <li><a class="navbar-brand" href="{% url 'members:all_lost_members' %}">All Lost Members</a></li>
             </ul>
+            {% elif user.is_staff %}
+            <ul class="navbar-nav">
+                <li><a class="navbar-brand" href="{% url 'members:all_members' %}">All Members</a></li>
+                <li><a class="navbar-brand" href="{% url 'members:all_lost_members' %}">All Lost Members</a></li>
+            </ul>
+            {% else %}
+            <p></p>
              {% endif %}
+
             <ul class="navbar-nav ms-auto">
                 {% if user.is_authenticated %}
-                <li><a href="{% url 'members:form' %}" class="nav-link">Add Lost Member</a></li>
-                <li><a href="{% url 'members:member_form' %}" class="nav-link">Your Form</a></li>
-                <li><a href="{% url 'members:my_form' %}" class="nav-link">Show My Form</a></li>
-                <li><a href="{% url 'members:lost_member_list' %}" class="nav-link">Show Lost Member</a></li>
+                <li><a href="{% url 'members:form' %}" class="nav-link">ዝጠፍኡ ኣባላት መዝግብ</a></li>
+                <li><a href="{% url 'members:member_form' %}" class="nav-link">ናትካ ፎርም ምላእ</a></li>
+                <li><a href="{% url 'members:my_form' %}" class="nav-link">ፎርምካ ርአ</a></li>
+                <li><a href="{% url 'members:lost_member_list' %}" class="nav-link">ዝጠፍኡ ኣባላት ርአ</a></li>
                 <li><a href="{% url 'members:logout' %}" class="nav-link">LogOut!</a></li>
                 {% else %}
                 <li><a href="{% url 'members:login' %}" class="nav-link">Log in</a></li>
