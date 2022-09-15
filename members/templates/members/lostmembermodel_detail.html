@@ -6,14 +6,11 @@
 {% if user.is_staff or user == object.author%}
 <div class="row m-3">
 
-    <div class="col-sm-5">
+    <div class="col-sm-8">
         <h5>ምሉአ ስም ናይ ኣብ ማሕበር ዘይነጥፍ/ዘይትነጥፍ: <u>{{ object.full_name }} </u></h5>
         <h6>ስልኪ ቅጽሩ/ራ: <u>{{ object.phone_number }}</u></h6>
         <h6>ገዛዉቱ/ታ: <u>{{ object.address }}</u></h6>
         <h5>መዝጋቢ ስም: <u>{{ object.author }} </u></h5>
-    </div>
-    <div class="col-sm-3">
-        <p></p>
     </div>
     <div class="col-sm-4">
         {% if object.photo %}
@@ -38,7 +35,8 @@
     </div>
 </div>
 <div class="row m-3">
-
+        <h5>ብቀረባ ክረክቦ/ክትረክቦ  ክረኽባ/ክትረኽቦ ዝኽእል/እትኽእል ኣብ ንጡፍ ኣገልግሎት ዘሎ/ላ ኣባል ማሕበር ስም</h5>
+    <p></p>
     <div class="col-sm-6">
         <h6>ምሉአ ስም ናይ ቀዳማይ ኣባል ማሕበር: <u>{{ object.member1_name }} </u></h6>
 

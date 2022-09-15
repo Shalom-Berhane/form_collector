@@ -6,13 +6,10 @@
 {% if user.is_staff or user == object.user_name%}
 <div class="row m-3">
 
-    <div class="col-sm-5">
+    <div class="col-sm-8">
         <h5>ምሉአ ስም: <u>{{ object.full_name }} </u></h5>
         <h6>ቁ. ስልኪ: <u>{{ object.phone_number }}</u></h6>
         <h6>ህልው ገዛወቲ: <u>{{ object.address }}</u></h6>
-    </div>
-    <div class="col-sm-3">
-        <p></p>
     </div>
     <div class="col-sm-4">
         {% if object.photo %}

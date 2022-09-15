@@ -49,6 +49,32 @@ class LostMemberCreateForm(forms.ModelForm):
         model = LostMemberModel
         fields = "__all__"
         exclude = ['author']
+        widgets = {
+            'member1_name': forms.TextInput(attrs={
+                'class': "form-control",
+                'style': 'max-width: 500px;',
+                'placeholder': 'ምሉአ ስም ናይ ቀዳማይ ኣባል ማሕበር',
+                }),
+            'member2_name': forms.TextInput(attrs={
+                'class': "form-control",
+                'style': 'max-width: 500px;',
+                'placeholder': 'ምሉአ ስም ናይ ካላኣይ ኣባል ማሕበር',
+            }),
+            'member1_phone': forms.TextInput(attrs={
+                'class': "form-control",
+                'style': 'max-width: 500px;',
+                'placeholder': 'ስልኪ ቅጽሩ/ራ ናይ ቀዳማይ ኣባል ማሕበር'
+                }),
+            'member2_phone': forms.TextInput(attrs={
+                'class': "form-control",
+                'style': 'max-width: 500px;',
+                'placeholder': 'ስልኪ ቅጽሩ/ራ ናይ ካላኣይ ኣባል ማሕበር'
+            }),
+            'additional_advice': forms.Textarea(attrs={
+                'class': "form-control",
+                'placeholder': 'ኣብ ምምላስ ኣባላት ክተኣታቶ ኣልዎ ትብልዎ ሓሳባት'
+            })
+        }
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -58,8 +84,8 @@ class LostMemberCreateForm(forms.ModelForm):
         self.fields['phone_number'].label = 'ስልኪ ቅጽሩ/ራ፥'
         self.fields['participation'].label = 'ገምጋም ህልው ኣገልግሎት ዘይነጥፍ ዘሎ ኣባል ማሕበር፥'
         self.fields['additional_reason'].label = 'ኣብ ላዕሊ ካብ ዝትጠቕሱ ወጻኢ ተወሳኪ ሓሳብ፥'
-        self.fields['member1_name'].label = 'ምሉአ ስም ናይ ቀዳማይ ኣባል ማሕበር'
-        self.fields['member1_phone'].label = 'ስልኪ ቅጽሩ/ራ ናይ ቀዳማይ ኣባል ማሕበር'
-        self.fields['member2_name'].label = 'ምሉአ ስም ናይ ካላኣይ ኣባል ማሕበር'
-        self.fields['member2_phone'].label = 'ስልኪ ቅጽሩ/ራ ናይ ካላኣይ ኣባል ማሕበር'
+        self.fields['member1_name'].label = 'ምሉአ ስም'
+        self.fields['member1_phone'].label = 'ስልኪ ቅጽሩ/ራ'
+        self.fields['member2_name'].label = 'ምሉአ ስም'
+        self.fields['member2_phone'].label = 'ስልኪ ቅጽሩ/ራ'
         self.fields['additional_advice'].label = 'ኣብ ምምላስ ኣባላት ክተኣታቶ ኣልዎ ትብልዎ ሓሳባት፥'
