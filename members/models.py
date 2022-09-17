@@ -31,7 +31,7 @@ class LostMemberModel(models.Model):
     photo = models.ImageField(upload_to='media', blank=True, null=True)
     address = models.CharField(max_length=100)
     phone_number = models.IntegerField(
-        help_text="Enter 6 digit roll number"
+        # help_text="Enter 6 digit roll number"
     )
     participation = models.CharField(choices=CHOICES, max_length=200, blank=True)
     additional_reason = models.TextField(blank=True)
@@ -48,7 +48,7 @@ class LostMemberModel(models.Model):
 class MemberFormModel(models.Model):
     user_name = models.OneToOneField(new_user, related_name="posts", on_delete=models.CASCADE)
     full_name = models.CharField(max_length=100)
-    photo = models.ImageField(upload_to='media',  blank=True, null=True)
+    photo = models.ImageField(upload_to='media')
     phone_number = models.IntegerField()
     address = models.CharField(max_length=100)
     current_member = models.CharField(max_length=200)
