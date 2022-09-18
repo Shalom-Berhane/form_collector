@@ -86,10 +86,12 @@ class AllLostMember(LoginRequiredMixin, ListView):
         return context
 
 
+# To see all lost members in detail
 class DetailLostMember(LoginRequiredMixin, DetailView):
     model = LostMemberModel
 
 
+# To see detail registered member
 class DetailMember(LoginRequiredMixin, DetailView):
     model = MemberFormModel
 
