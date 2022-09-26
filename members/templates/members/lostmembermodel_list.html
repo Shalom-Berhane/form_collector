@@ -15,18 +15,18 @@
 
 <a class="aTag" href="{% url 'members:detail' pk=post.pk %}">
     <div class="row">
-        <div class="col-sm-2">
+        <div class="col-6 col-md-4">
             {% if post.photo %}
-            <img src="{{ post.photo.url }}" class="img-thumbnail" >
+            <img src="{{ post.image_thumbnail.url }}" class="img-thumbnail" >
             {% else %}
             <img src="" alt="No photo provided" class="img-thumbnail" >
             {% endif %}
         </div>
-        <div class="col-sm-6">
+        <div class="col-6 col-md-4">
             <h5>{{ post.full_name }}</h5>
             {{ post.phone_number }}
         </div>
-        <div class="col-sm-4">
+        <div class="col-6 col-md-4">
             <h6>{{ post.address }}</h6>
             <p>መዝጋቢ ስም: {{ post.author }}</p>
         </div>

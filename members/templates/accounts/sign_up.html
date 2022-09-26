@@ -3,13 +3,13 @@
 
 {% block content %}
 <div class="container">
-    <h1>Sign Up</h1>
-    <form method="POST">
+    <h1>ምዝገባ (Sign Up)</h1>
+    <form method="POST" class="row g-3 needs-validation" novalidate>
         {% csrf_token %}
         {% bootstrap_form form %}
-        <input type="submit" value="Sign Up" class="btn btn-success">
+        <input type="submit" value="ተመዝገብ" class="btn btn-success">
     </form>
     <br/>
-    <p>I have account. <a href="{% url 'members:login' %}">Login</a></p>
+    <p>I have account (ምዝጉብ’የ)--> <a href="{% url 'members:login' %}">Login</a></p>
 </div>
 {% endblock %}

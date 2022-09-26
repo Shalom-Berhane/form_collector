@@ -2,12 +2,28 @@ from django import forms
 from .models import LostMemberModel, MemberFormModel
 from django.contrib.auth import get_user_model
 from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.forms import AuthenticationForm, UsernameField
 
 CHOICES = (
     ("1", "ኣብ ፍሉይ መደብ ጥራይ ይሳተፍ/ትሳተፍ"),
     ("2", "ኣብ ናይ ጽዋአ ኣኼባ ሳሕቲ ይሳተፍ/ትሳተፍ"),
     ("3", "ኣብ ኩሉ ዓይነት ኣገልግሎት ኣይሳተፍን/ኣይትሳተፍን"),
 )
+
+
+class UserLoginForm(AuthenticationForm):
+    def __init__(self, *args, **kwargs):
+        super(UserLoginForm, self).__init__(*args, **kwargs)
+
+    username = UsernameField(widget=forms.TextInput(
+        attrs={'class': 'form-control', 'placeholder': 'መጸዉዒ ስም ወይ ቁ.ስልኪ', 'id': 'hello'}))
+    password = forms.CharField(widget=forms.PasswordInput(
+        attrs={
+            'class': 'form-control',
+            'placeholder': 'ሑቡእ ምእተዊ (password)',
+            'id': 'hi',
+        }
+))
 
 
 class UserCreateForm(UserCreationForm):
@@ -18,7 +34,27 @@ class UserCreateForm(UserCreationForm):
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        self.fields['username'].label = 'Display Name'
+        self.fields['username'].label = 'መጸዉዒ ስም ወይ ቁ.ስልኪ'
+        self.fields['password1'].label = 'ሑቡእ ምእተዊ (password)'
+        self.fields['password2'].label = 'እቲ ሑቡእ ምእተዊ ድገሞ (Password confirmation)'
+        self.fields['username'].help_text = """<ul>
+        
+      <li>ክፍተት (space) ኣይፍቀድን’ዩ</li>
+      <li>ምጸውዒ ስም እንተ ተታሒዙ ቁጽሪ እንዳ ወሰኽካ ክትምዝገብ ትኽእል አካ</li>
+      </ul>
+        """
+        self.fields['password1'].help_text = """<ul>
+
+        <li>ዝወሓደ 8 ፊደል ክኸውን ኣለዎ</li>
+        <li>ኩሉ ቁጽሪ ክኸውን ኡብሉን</li>
+        <li>ቀልጢፉ ዝግመት  ክኸውን ኡብሉን</li>
+        </ul>
+          """
+        self.fields['password2'].help_text = """<ul>
+
+        <li>እታ ኣብ ላዕሊ ዝእተካያ ድገማ</li>
+        </ul>
+          """
 
 
 class MemberForm(forms.ModelForm):
@@ -39,7 +75,7 @@ class MemberForm(forms.ModelForm):
         self.fields['academic_department'].label = 'ዓለማዊ ዝወዳእካዮ/ክዮ ዓወደ ትምህርቲ'
         self.fields['additional_course'].label = 'ምያ ወይ ስራሕ'
         self.fields['academic_year'].label = 'ደረጃ ትምህርቲ'
-        self.fields['other_academic_year'].label = 'ካብ ኣብላዕሊ ተጠቂሱ ዘሎ ደረጃ ትምህርቲ ወጻኢ'
+        self.fields['other_academic_year'].label = 'ደረጃ ትምህርቲ ካብ ኣብ ላዕሊ ተጠቂሱ ዘሎ ንላዕሊ ወይ ንታሕቲ እንተኾይኑ'
         self.fields['guardian_name'].label = 'ናይ ቀረባ ዋሕስ ምሉእ ስም'
         self.fields['guardian_number'].label = 'ቁ. ስልኪ ናይ ዋሕስካ/ኪ'
 

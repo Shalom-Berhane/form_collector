@@ -15,18 +15,18 @@
 <div class="list-group">
 <a class="aTag" href="{% url 'members:detail_member' pk=post.pk %}">
     <div class="row">
-        <div class="col-sm-2">
+        <div class="col-6 col-md-4">
             {% if post.photo %}
-            <img src="{{ post.photo.url }}" class="img-thumbnail" >
+            <img src="{{ post.image_thumbnail.url }}" class="img-thumbnail" >
             {% else %}
             <img src="" alt="No photo provided" class="img-thumbnail" >
             {% endif %}
         </div>
-        <div class="col-sm-6">
+        <div class="col-6 col-md-4">
             <h4>{{ post.full_name }}</h4>
             {{ post.phone_number }}
         </div>
-        <div class="col-sm-4">
+        <div class="col-6 col-md-4">
             <h5>{{ post.address }}</h5>
             <p>click to see more!</p>
         </div>

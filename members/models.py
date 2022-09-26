@@ -1,4 +1,6 @@
 from django.db import models
+from imagekit.models import ImageSpecField
+from imagekit.processors import ResizeToFill
 from django.contrib.auth import get_user_model
 
 CHOICES = (
@@ -37,6 +39,10 @@ class LostMemberModel(models.Model):
     author = models.ForeignKey(new_user, on_delete=models.CASCADE)
     full_name = models.CharField(max_length=200)
     photo = models.ImageField(upload_to='media', blank=True, null=True)
+    image_thumbnail = ImageSpecField(source='photo',
+                                     processors=[ResizeToFill(200, 200)],
+                                     format='JPEG',
+                                     options={'quality': 100})
     address = models.CharField(max_length=100)
     phone_number = models.IntegerField(
         # help_text="Enter 6 digit roll number"
@@ -45,8 +51,8 @@ class LostMemberModel(models.Model):
     additional_reason = models.TextField(blank=True)
     member1_name = models.CharField(max_length=200)
     member1_phone = models.IntegerField()
-    member2_name = models.CharField(max_length=200, blank=True)
-    member2_phone = models.IntegerField(blank=True)
+    member2_name = models.CharField(max_length=200, blank=True, null=True)
+    member2_phone = models.IntegerField(blank=True, null=True)
     additional_advice = models.TextField()
 
     def __str__(self):
@@ -57,6 +63,10 @@ class MemberFormModel(models.Model):
     user_name = models.OneToOneField(new_user, related_name="posts", on_delete=models.CASCADE)
     full_name = models.CharField(max_length=100)
     photo = models.ImageField(upload_to='media')
+    image_thumbnail = ImageSpecField(source='photo',
+                                     processors=[ResizeToFill(200, 200)],
+                                     format='JPEG',
+                                     options={'quality': 100})
     phone_number = models.IntegerField()
     address = models.CharField(max_length=100)
     current_member = models.CharField(choices=membership, max_length=250)

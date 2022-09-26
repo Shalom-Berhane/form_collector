@@ -3,6 +3,7 @@ from django.contrib.auth import views as auth_views
 from django.conf import settings
 from django.conf.urls.static import static
 from . import views
+from .forms import UserLoginForm
 
 app_name = 'members'
 
@@ -11,7 +12,10 @@ urlpatterns = [
          views.Home.as_view(),
          name='home'),
     path("accounts/login/",
-         auth_views.LoginView.as_view(template_name="accounts/login.html"),
+         auth_views.LoginView.as_view(
+             template_name="accounts/login.html",
+             authentication_form=UserLoginForm
+         ),
          name='login'),
     path("logout/",
          auth_views.LogoutView.as_view(),
