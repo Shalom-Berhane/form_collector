@@ -5,13 +5,13 @@
 <div class="container">
     <h1>ማ/ደ/ሰ/መ/ደ ኣብ ኣዲስ ኣባባ</h1>
     <h3>ዕላማ ናይዚ ፎርም አዚ ካብ ኣገልግሎት ማሕበር ርሒቆም ዘለዉ ኣባላት ማሕበር ናብ ኣገልግሎት ንምምስ ስለ ዝኮነ ምትሕብባርኩም ከይፍለየና ንምሕጸን!</h3>
-    <form enctype="multipart/form-data" method="POST" class="was-validated">
+    <form enctype="multipart/form-data" method="POST" class="row g-3 needs-validation" novalidate>
         {% csrf_token %}
 
         {% bootstrap_form form exclude="member1_name, member1_phone, member2_name, member2_phone, additional_advice"%}
         <br/>
         <p>ብቀረባ ክረክቦ/ክትረክቦ  ክረኽባ/ክትረኽቦ ዝኽእል/እትኽእል ኣብ ንጡፍ ኣገልግሎት ዘሎ/ላ ኣባል ማሕበር ስም</p>
-        <div class="row m-3">
+        <div class="row m-3 was-validated">
 
             <div class="col-sm-6">
                 <h5>ቀዳማይ ኣባል ማሕበር</h5>
@@ -29,10 +29,11 @@
 
 
         <br/>
+        <div class="was-validated">
         {{form.additional_advice.label}}{{form.additional_advice}}
+            </div>
         <br/>
         <input type="submit" value="መዝግብ" class="btn btn-success">
     </form>
-    <br/>
 </div>
 {% endblock %}

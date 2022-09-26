@@ -5,11 +5,11 @@
 <div class="container">
     <h1>ኣባልነት ፎርም ማ/ደ/ሰ/መ/ደ ኣብ ኣዲስ ኣባባ</h1>
 <!--    <h3>small info</h3>-->
-    <form enctype="multipart/form-data" method="POST">
+    <form enctype="multipart/form-data" method="POST" class="row g-3 needs-validation" novalidate>
         {% csrf_token %}
         {% bootstrap_form form %}
         <input type="submit" value="መዝግብ" class="btn btn-success">
     </form>
-    <br/>
+<!--    <br/>-->
 </div>
 {% endblock %}
