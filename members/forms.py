@@ -53,22 +53,22 @@ class LostMemberCreateForm(forms.ModelForm):
             'member1_name': forms.TextInput(attrs={
                 'class': "form-control",
                 'style': 'max-width: 500px;',
-                'placeholder': 'ምሉአ ስም ናይ ቀዳማይ ኣባል ማሕበር',
+                'placeholder': 'ምሉአ ስም',
                 }),
             'member2_name': forms.TextInput(attrs={
                 'class': "form-control",
                 'style': 'max-width: 500px;',
-                'placeholder': 'ምሉአ ስም ናይ ካላኣይ ኣባል ማሕበር',
+                'placeholder': 'ምሉአ ስም',
             }),
             'member1_phone': forms.NumberInput(attrs={
                 'class': "form-control",
                 'style': 'max-width: 500px;',
-                'placeholder': 'ስልኪ ቅጽሩ/ራ ናይ ቀዳማይ ኣባል ማሕበር'
+                'placeholder': 'ስልኪ ቅጽሩ/ራ'
                 }),
             'member2_phone': forms.NumberInput(attrs={
                 'class': "form-control",
                 'style': 'max-width: 500px;',
-                'placeholder': 'ስልኪ ቅጽሩ/ራ ናይ ካላኣይ ኣባል ማሕበር'
+                'placeholder': 'ስልኪ ቅጽሩ/ራ'
             }),
             'additional_advice': forms.Textarea(attrs={
                 'class': "form-control",
