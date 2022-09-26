@@ -60,12 +60,12 @@ class LostMemberCreateForm(forms.ModelForm):
                 'style': 'max-width: 500px;',
                 'placeholder': 'ምሉአ ስም ናይ ካላኣይ ኣባል ማሕበር',
             }),
-            'member1_phone': forms.TextInput(attrs={
+            'member1_phone': forms.NumberInput(attrs={
                 'class': "form-control",
                 'style': 'max-width: 500px;',
                 'placeholder': 'ስልኪ ቅጽሩ/ራ ናይ ቀዳማይ ኣባል ማሕበር'
                 }),
-            'member2_phone': forms.TextInput(attrs={
+            'member2_phone': forms.NumberInput(attrs={
                 'class': "form-control",
                 'style': 'max-width: 500px;',
                 'placeholder': 'ስልኪ ቅጽሩ/ራ ናይ ካላኣይ ኣባል ማሕበር'
