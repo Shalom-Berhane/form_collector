@@ -7,6 +7,14 @@ CHOICES = (
     ("ኣብ ኩሉ ዓይነት ኣገልግሎት ኣይሳተፍን/ኣይትሳተፍን", "ኣብ ኩሉ ዓይነት ኣገልግሎት ኣይሳተፍን/ኣይትሳተፍን"),
 )
 
+membership = (
+    ("ክፍሊ ምክትታል ኣብላት", "ክፍሊ ምክትታል ኣብላት"),
+    ("ክፍሊ ልምዓት", "ክፍሊ ልምዓት"),
+    ("ክፍሊ ትምህርቲ", "ክፍሊ ትምህርቲ"),
+    ("ክፍሊ ስነጥበብ", "ክፍሊ ስነጥበብ"),
+    ("ክፍሊ መዝሙር", "ክፍሊ መዝሙር"),
+)
+
 academic = (
     ("11", "11"),
     ("12", "12"),
@@ -37,8 +45,8 @@ class LostMemberModel(models.Model):
     additional_reason = models.TextField(blank=True)
     member1_name = models.CharField(max_length=200)
     member1_phone = models.IntegerField()
-    member2_name = models.CharField(max_length=200)
-    member2_phone = models.IntegerField()
+    member2_name = models.CharField(max_length=200, blank=True)
+    member2_phone = models.IntegerField(blank=True)
     additional_advice = models.TextField()
 
     def __str__(self):
@@ -51,7 +59,7 @@ class MemberFormModel(models.Model):
     photo = models.ImageField(upload_to='media')
     phone_number = models.IntegerField()
     address = models.CharField(max_length=100)
-    current_member = models.CharField(max_length=200)
+    current_member = models.CharField(choices=membership, max_length=250)
     church_course = models.CharField(max_length=200)
     academic_department = models.CharField(max_length=200)
     additional_course = models.CharField(max_length=200)
