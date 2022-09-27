@@ -46,8 +46,8 @@ class UserCreateForm(UserCreationForm):
         self.fields['password1'].help_text = """<ul>
 
         <li>ዝወሓደ 8 ፊደል ክኸውን ኣለዎ</li>
-        <li>ኩሉ ቁጽሪ ክኸውን ኡብሉን</li>
-        <li>ቀልጢፉ ዝግመት  ክኸውን ኡብሉን</li>
+        <li>ኩሉ ቁጽሪ ክኸውን የብሉን</li>
+        <li>ቀልጢፉ ዝግመት  ክኸውን የብሉን</li>
         </ul>
           """
         self.fields['password2'].help_text = """<ul>
@@ -114,7 +114,7 @@ class LostMemberCreateForm(forms.ModelForm):
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        self.fields['full_name'].label = 'ምሉአ ስም ናይ ኣብ ማሕበር ዘይነጥፍ/ዘይትነጥፍ ዘሎ/ዘላ ኣባል ምሕበር፥'
+        self.fields['full_name'].label = 'ምሉአ ስም ናይ ኣብ ማሕበር ዘይነጥፍ/ዘይትነጥፍ ዘሎ/ዘላ ኣባል ማሕበር፥'
         self.fields['photo'].label = 'ናይ ካብ ኣገልግሎት ማሕበር ርሒቁ ዘሎ ስእሊ የእቱ'
         self.fields['address'].label = 'ገዛዉቱ/ታ፥'
         self.fields['phone_number'].label = 'ስልኪ ቅጽሩ/ራ፥'
