@@ -16,11 +16,11 @@ class UserLoginForm(AuthenticationForm):
         super(UserLoginForm, self).__init__(*args, **kwargs)
 
     username = UsernameField(widget=forms.TextInput(
-        attrs={'class': 'form-control', 'placeholder': 'መጸዉዒ ስም ወይ ቁ.ስልኪ', 'id': 'hello'}))
+        attrs={'class': 'form-control', 'placeholder': 'ሙሉእ መጸዉዒ ስም ወይ ቁ.ስልኪ', 'id': 'hello'}))
     password = forms.CharField(widget=forms.PasswordInput(
         attrs={
             'class': 'form-control',
-            'placeholder': 'ሑቡእ ምእተዊ (password)',
+            'placeholder': 'ምስጢራዊ መእተዊ (password)',
             'id': 'hi',
         }
 ))
@@ -34,14 +34,15 @@ class UserCreateForm(UserCreationForm):
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        self.fields['username'].label = 'መጸዉዒ ስም ወይ ቁ.ስልኪ'
-        self.fields['password1'].label = 'ሑቡእ ምእተዊ (password)'
-        self.fields['password2'].label = 'እቲ ሑቡእ ምእተዊ ድገሞ (Password confirmation)'
+        self.fields['username'].label = 'ሙሉእ መጸዉዒ ስም ወይ ቁ.ስልኪ'
+        self.fields['password1'].label = 'ምስጢራዊ መእተዊ (password)'
+        self.fields['password2'].label = 'እቲ ምስጢራዊ መእተዊ ድገሞ (Password confirmation)'
         self.fields['username'].help_text = """<ul>
-        
-      <li>ክፍተት (space) ኣይፍቀድን’ዩ</li>
-      <li>ምጸውዒ ስም እንተ ተታሒዙ ቁጽሪ እንዳ ወሰኽካ ክትምዝገብ ትኽእል አካ</li>
-      </ul>
+        <li>ንኣብነት ኣቤል ክብሮም --> <b>(ኣቤል_ክብሮም፣ ኣቤል22፣ abelkb)</b></li>
+        <li>ወይ ቁ.ስልኪ</li>
+        <li>ክፍተት (space) ኣይፍቀድን’ዩ</li>
+        <li>ምጸውዒ ስም እንተ ተታሒዙ ቁጽሪ እንዳ ወሰኽካ ክትምዝገብ ትኽእል አካ</li>
+        </ul>
         """
         self.fields['password1'].help_text = """<ul>
 
@@ -52,7 +53,7 @@ class UserCreateForm(UserCreationForm):
           """
         self.fields['password2'].help_text = """<ul>
 
-        <li>እታ ኣብ ላዕሊ ዝእተካያ ድገማ</li>
+        <li>እቲ ኣብ ላዕሊ ዝእተካዮ ምስጢራዊ መእተዊ ድገሞ</li>
         </ul>
           """
 
