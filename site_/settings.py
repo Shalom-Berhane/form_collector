@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 import os
 from pathlib import Path
+import cloudinary
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -40,7 +41,7 @@ INSTALLED_APPS = [
 
     # third part
     'bootstrap5',
-    'imagekit',
+    'cloudinary',
 
     # custom
     'members',
@@ -141,3 +142,11 @@ LOGIN_REDIRECT_URL = "members:home"
 LOGOUT_REDIRECT_URL = "members:login"
 
 CSRF_TRUSTED_ORIGINS = ['https://99b2-196-188-160-224.ngrok.io']
+
+
+cloudinary.config(
+    cloud_name="dgq4schml",
+    api_key="276324835137842",
+    api_secret="zA4SwnPRuTsD5aJUuBT5_i44Iqc",
+    secur =True
+)

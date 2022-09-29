@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% load bootstrap5 %}
+{% load cloudinary %}
 
 {% block content %}
 
@@ -13,7 +14,8 @@
     </div>
     <div class="col-sm-4">
         {% if object.photo %}
-        <img src="{{ object.photo.url }}" class="img-thumbnail" style="width:100%;height:100%;">
+<!--        <img src="{{ object.photo.url }}" class="img-thumbnail" style="width:100%;height:100%;">-->
+        {% cloudinary object.photo format="jpg" quality="auto" class="img-thumbnail" width=200 height=250 gravity="faces" crop="fill" %}
         {% else %}
         <img src="" alt="No photo provided" class="img-thumbnail" >
         {% endif %}
