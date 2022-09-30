@@ -117,6 +117,7 @@ class LostMemberCreateForm(forms.ModelForm):
         super().__init__(*args, **kwargs)
         self.fields['full_name'].label = 'ምሉአ ስም ናይ ኣብ ማሕበር ዘይነጥፍ/ዘይትነጥፍ ዘሎ/ዘላ ኣባል ማሕበር፥'
         self.fields['photo'].label = 'ናይ ካብ ኣገልግሎት ማሕበር ርሒቁ ዘሎ ስእሊ የእቱ'
+        self.fields['photo'].help_text = "ክግደፍ ይከኣል’ዩ"
         self.fields['address'].label = 'ገዛዉቱ/ታ፥'
         self.fields['phone_number'].label = 'ስልኪ ቅጽሩ/ራ፥'
         self.fields['participation'].label = 'ገምጋም ህልው ኣገልግሎት ዘይነጥፍ ዘሎ ኣባል ማሕበር፥'

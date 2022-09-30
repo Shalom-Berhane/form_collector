@@ -37,7 +37,7 @@ class User(new_user):
 class LostMemberModel(models.Model):
     author = models.ForeignKey(new_user, on_delete=models.CASCADE)
     full_name = models.CharField(max_length=200)
-    photo = CloudinaryField('image')
+    photo = CloudinaryField('image', blank=True, null=True)
     address = models.CharField(max_length=100)
     phone_number = models.IntegerField(
         # help_text="Enter 6 digit roll number"
