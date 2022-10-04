@@ -51,8 +51,12 @@
     <div class="col-sm-6">
         <h6>ቁ. ስልኪ ናይ ዋሕስካ/ኪ: <u>{{ object.guardian_number }}</u></h6>
     </div>
-
+    <p></p>
+    {% if user.is_staff %}
+<a href="{% url 'members:save' pk=object.pk %}"><button class="btn btn-sm btn-success">Download</button> </a>
+    {% endif %}
 </div>
+
 {% else %}
 <h5>you have no access.</h5>
 {% endif %}

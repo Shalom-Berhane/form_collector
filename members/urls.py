@@ -46,5 +46,11 @@ urlpatterns = [
          name="detail"),
     path("detail_member/<pk>/",
          views.DetailMember.as_view(),
-         name="detail_member")
+         name="detail_member"),
+    path("save/<pk>/",
+         views.render_docx_view,
+         name='save'),
+    path("save_lost_member/<pk>/",
+         views.render_lost_member_view,
+         name='save_lost'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

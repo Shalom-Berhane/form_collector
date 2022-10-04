@@ -57,8 +57,13 @@
         <h6>ኣብ ምምላስ ኣባላት ክተኣታቶ ኣልዎ ትብልዎ ሓሳባት:</h6>
         <p>{{ object.additional_advice }}</p>
     </div>
+        <p></p>
+    {% if user.is_staff %}
+<a href="{% url 'members:save_lost' pk=object.pk %}"><button class="btn btn-sm btn-success">Download</button> </a>
+    {% endif %}
 </div>
-</div>
+
+<!--</div>-->
 
 {% else %}
 <h5>you have no access.</h5>

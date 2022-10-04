@@ -148,6 +148,6 @@ cloudinary.config(
     cloud_name="dgq4schml",
     api_key="276324835137842",
     api_secret="zA4SwnPRuTsD5aJUuBT5_i44Iqc",
-    api_proxy='http://proxy.server:3128',
+    # api_proxy='http://proxy.server:3128',
     secure =True
 )
