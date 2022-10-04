@@ -14,6 +14,7 @@ from django.http import HttpResponse
 from docxtpl import DocxTemplate, InlineImage
 from docx.shared import Mm
 from urllib import request
+from site_.settings import BASE_DIR
 import io
 import os
 
@@ -109,8 +110,8 @@ class DetailMember(LoginRequiredMixin, DetailView):
 
 def member_context_data(pk, model):
     member = get_object_or_404(model, pk=pk)
-    image_name = 'saved/' + str(member.user_name) + '_member.png'
-    save_name = 'saved/saved_member.png'
+    image_name = BASE_DIR/'saved/' + str(member.user_name) + '_member.png'
+    save_name = BASE_DIR/'saved/saved_member.png'
 
     # response = requests.get(member.photo.url)
     # image_bytes = io.BytesIO(response.content)
