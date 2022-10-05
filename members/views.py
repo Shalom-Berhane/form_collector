@@ -122,7 +122,7 @@ def member_context_data(pk, model):
     resized_img = img.resize((200, 250))
     resized_img.save(save_name)
 
-    doc = DocxTemplate("members/templates/members/template.docx")
+    doc = DocxTemplate(os.path.join(BASE_DIR, "members/templates/members/template.docx"))
     myimage = InlineImage(doc, image_descriptor=save_name, width=Mm(50), height=Mm(60))
 
     context = {'name': member.full_name, 'user_name': member.user_name, 'phone': member.phone_number,
@@ -150,7 +150,7 @@ def lost_context_data(pk, model):
     image_name = os.path.join(BASE_DIR, 'saved/' + str(member.author) + '_lost_member.png')
     save_name = os.path.join(BASE_DIR, 'saved/saved_lost_member.png')
 
-    doc = DocxTemplate("members/templates/members/lost_member_template.docx")
+    doc = DocxTemplate(os.path.join(BASE_DIR, "members/templates/members/lost_member_template.docx"))
 
     if member.photo:
         request.urlretrieve(member.photo.url, image_name)
