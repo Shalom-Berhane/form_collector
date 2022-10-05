@@ -158,7 +158,7 @@ def lost_context_data(pk, model):
         img = Image.open(image_name)
         resized_img = img.resize((200, 250))
         resized_img.save(save_name)
-        myimage = InlineImage(doc, image_descriptor=save_name, width=Mm(50), height=Mm(60))
+        myimage = InlineImage(doc, image_descriptor=save_name, width=Mm(40), height=Mm(60))
     else:
         myimage = "No photo provided."
 
