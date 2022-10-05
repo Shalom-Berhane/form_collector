@@ -119,7 +119,7 @@ def member_context_data(pk, model):
     request.urlretrieve(member.photo.url, image_name)
 
     img = Image.open(image_name)
-    resized_img = img.resize((200, 250))
+    resized_img = img.resize((150, 250))
     resized_img.save(save_name)
 
     doc = DocxTemplate(os.path.join(BASE_DIR, "members/templates/members/template.docx"))
