@@ -119,11 +119,11 @@ def member_context_data(pk, model):
     request.urlretrieve(member.photo.url, image_name)
 
     img = Image.open(image_name)
-    resized_img = img.resize((150, 250))
+    resized_img = img.resize((200, 250))
     resized_img.save(save_name)
 
     doc = DocxTemplate(os.path.join(BASE_DIR, "members/templates/members/template.docx"))
-    myimage = InlineImage(doc, image_descriptor=save_name, width=Mm(50), height=Mm(60))
+    myimage = InlineImage(doc, image_descriptor=save_name, width=Mm(40), height=Mm(60))
 
     context = {'name': member.full_name, 'user_name': member.user_name, 'phone': member.phone_number,
                'image': myimage, 'address': member.address, 'current_member': member.current_member,
