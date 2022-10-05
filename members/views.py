@@ -110,8 +110,8 @@ class DetailMember(LoginRequiredMixin, DetailView):
 
 def member_context_data(pk, model):
     member = get_object_or_404(model, pk=pk)
-    image_name = BASE_DIR/'saved/' + str(member.user_name) + '_member.png'
-    save_name = BASE_DIR/'saved/saved_member.png'
+    image_name = os.path.join(BASE_DIR, 'saved/' + str(member.user_name) + '_member.png')
+    save_name = os.path.join(BASE_DIR, 'saved/saved_member.png')
 
     # response = requests.get(member.photo.url)
     # image_bytes = io.BytesIO(response.content)
@@ -147,8 +147,8 @@ def member_context_data(pk, model):
 
 def lost_context_data(pk, model):
     member = get_object_or_404(model, pk=pk)
-    image_name = 'saved/' + str(member.author) + '_lost_member.png'
-    save_name = 'saved/saved_lost_member.png'
+    image_name = os.path.join(BASE_DIR, 'saved/' + str(member.author) + '_lost_member.png')
+    save_name = os.path.join(BASE_DIR, 'saved/saved_lost_member.png')
 
     doc = DocxTemplate("members/templates/members/lost_member_template.docx")
 
