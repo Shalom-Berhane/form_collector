@@ -36,7 +36,9 @@
     </div>
 </a>
 <p></p>
+    {% if user.is_staff %}
 <a href="{% url 'members:save_lost' pk=post.pk %}"><button class="btn btn-sm btn-success">Download</button> </a>
+    {% endif %}
 <hr/>
 {% else %}
 <p></p>
